@@ -9,10 +9,15 @@ WHOAMI        :=`whoami`
 
 help:
 	@printf "Uso: make [opções]\n\n"
-	@printf "$(YELLOW)Devops Tools - Openshift 4.3$(NC)\n\n"
+	@printf "==========================================================================\n"
+	@printf "|| $(YELLOW)Devops Tools - Openshift 4.3$(NC)                                        ||\n"
+	@printf "==========================================================================\n"
 	@printf "opções:\n"
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "$(GREEN)%-20s$(NC) %s$(NC)\n", $$1, $$2}'
-	@printf "\n"
+	@printf "\n\n"
+	@printf "==========================================================================\n"
+	@printf "$(CYAN)*  Deve estar logado: \n"
+	@printf "$(CYAN)*  $ oc login http://console.your.openshift.com \n\n$(NC)"
 
 .PHONY:
 
@@ -20,8 +25,8 @@ INVENTORY=inventory/
 
 install: ## Instala ferramentas devops no openshift
 	@printf "\n\n$(GREEN)----> Instalando ferramentas devops no cluster openshift $(NC)\n\n"
-	@ansible-playbook -i {{INVENTORY}} apply.yml
-	@printf "\n\n$(GREEN)----> Instalacao finalizada com sucesso $(NC)\n\n"
+	@ansible-playbook -i $(INVENTORY) apply.yml
+	@printf "\n\n$(GREEN)----> Instalacao finalizada $(NC)\n\n"
 
 remove: ## Remova todo o projeto devops do cluster openshift
 	@printf "\n\n$(GREEN)----> Deletando todos objetos do projeto devops $(NC)\n\n"

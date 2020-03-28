@@ -30,3 +30,21 @@ openshift_cluster_content:
       tags:
       - devops
       - nexus
+- object: sonar
+  content:
+    - name: sonar
+      template: "{{ inventory_dir }}/../templates/sonar-template.yml"
+      params: "{{ inventory_dir }}/../params/devops/sonar.ini"
+      namespace: "devops"
+      tags:
+      - devops
+      - sonar
+- object: jenkins
+  content:
+    - name: jenkins
+      template: "Jenkins-persistent"
+      namespace: "devops"
+      tags:
+      - devops
+      - jenins
+      - pipeline
