@@ -12,3 +12,11 @@ openshift_cluster_content:
       tags:
       - projectrequests
       - projectrequests-dev 
+- object: devops-tools
+  content:
+    - name: devops-tools
+      template: "{{ inventory_dir }}/../templates/cicd-template.yml"
+      params: "{{ inventory_dir }}/../params/devops/cicd"
+      namespace: "devops"
+      tags:
+      - devops

@@ -1,0 +1,4 @@
+DEV_PROJECT=dev
+STAGE_PROJECT=stage
+EPHEMERAL="true"
+ENABLE_QUAY="false"
