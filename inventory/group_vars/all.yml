@@ -12,42 +12,42 @@ openshift_cluster_content:
       tags:
       - projectrequests
       - projectrequests-dev
-#- object: gogs
-#  content:
-#    - name: gogs
-#      template: "{{ inventory_dir }}/../templates/gogs-template.yml"
-#      params: "{{ inventory_dir }}/../params/devops/gogs.ini"
-#      namespace: "devops"
-#      tags:
-#      - devops
-#      - gogs
-#- object: nexus
-#  content:
-#    - name: nexus
-#      template: "{{ inventory_dir }}/../templates/nexus-template.yml"
-#      params: "{{ inventory_dir }}/../params/devops/nexus.ini"
-#      namespace: "devops"
-#      tags:
-#      - devops
-#      - nexus
-#- object: sonar
-#  content:
-#    - name: sonar
-#      template: "{{ inventory_dir }}/../templates/sonar-template.yml"
-#      params: "{{ inventory_dir }}/../params/devops/sonar.ini"
-#      namespace: "devops"
-#      tags:
-#      - devops
-#      - sonar
-#- object: jenkins
-#  content:
-#    - name: jenkins
-#      template: "{{ inventory_dir }}/../templates/jenkins-template.yml"
-#      params: "{{ inventory_dir }}/../params/devops/jenkins.ini"
-#      namespace: "devops"
-#      tags:
-#      - devops
-#      - jenins
+- object: gogs
+  content:
+    - name: gogs
+      template: "{{ inventory_dir }}/../templates/gogs-template.yml"
+      params: "{{ inventory_dir }}/../params/devops/gogs.ini"
+      namespace: "devops"
+      tags:
+      - devops
+      - gogs
+- object: nexus
+  content:
+    - name: nexus
+      template: "{{ inventory_dir }}/../templates/nexus-template.yml"
+      params: "{{ inventory_dir }}/../params/devops/nexus.ini"
+      namespace: "devops"
+      tags:
+      - devops
+      - nexus
+- object: sonar
+  content:
+    - name: sonar
+      template: "{{ inventory_dir }}/../templates/sonar-template.yml"
+      params: "{{ inventory_dir }}/../params/devops/sonar.ini"
+      namespace: "devops"
+      tags:
+      - devops
+      - sonar
+- object: jenkins
+  content:
+    - name: jenkins
+      template: "{{ inventory_dir }}/../templates/jenkins-template.yml"
+      params: "{{ inventory_dir }}/../params/devops/jenkins.ini"
+      namespace: "devops"
+      tags:
+      - devops
+      - jenins
 - object: java-pipeline
   content:
     - name: java-pipeline

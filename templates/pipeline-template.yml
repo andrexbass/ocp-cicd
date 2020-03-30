@@ -31,6 +31,7 @@ objects:
       strategy:
         jenkinsPipelineStrategy:
           type: JenkinsPipeline
+          jenkinsfilePath: Jenkinsfile
           env:
           - name: DEV_PROJECT
             value: ${DEV_PROJECT}
@@ -38,5 +39,5 @@ objects:
             value: ${STAGE_PROJECT}
           - name: ENABLE_QUAY
             value: ${ENABLE_QUAY}
-          jenkinsfilePath: Jenkinsfile
+          
             

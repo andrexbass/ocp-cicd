@@ -1,5 +1,5 @@
 ---
-- name: Create Project Example
+- name: Create Project Devops
   hosts: "seed-hosts"
   tasks:
     - include_role:
