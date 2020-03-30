@@ -5,7 +5,7 @@ metadata:
   annotations:
     description: Jenkins pipeline
     tags: jenkins, pipeline
-  name: pipeline
+  name: pipeline-template
 objects:
   - apiVersion: v1
     kind: BuildConfig
@@ -13,9 +13,9 @@ objects:
       annotations:
         pipeline.alpha.openshift.io/uses: '[{"name": "jenkins", "namespace": "devops", "kind": "DeploymentConfig"}]'
       labels:
-        app: pipeline
-        name: pipeline
-      name: pipeline
+        app: cicd-pipeline
+        name: cicd-pipeline
+      name: first-pipeline
     spec:
       triggers:
         - type: GitHub
@@ -26,7 +26,8 @@ objects:
             secret: ${WEBHOOK_SECRET}
       runPolicy: Serial
       source:
-        type: None
+        git:
+          uri: "https://github.com/andrexbass/ocp-cicd"
       strategy:
         jenkinsPipelineStrategy:
           type: JenkinsPipeline
@@ -37,5 +38,5 @@ objects:
             value: ${STAGE_PROJECT}
           - name: ENABLE_QUAY
             value: ${ENABLE_QUAY}
-          jenkinsfilePath: https://raw.githubusercontent.com/andrexbass/ocp-cicd/master/JenkinsFile
+          jenkinsfilePath: Jenkinsfile
             
