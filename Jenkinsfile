@@ -5,14 +5,15 @@ pipeline {
         label 'maven'
     }
     stages {
-    stage('Build App') {
-        steps {
-            git branch: 'master', url: 'https://github.com/andrexbass/php-helloworld.git'
+        stage('Build App') {
+            steps {
+                git branch: 'master', url: 'https://github.com/andrexbass/php-helloworld.git'
+            }
         }
-    }
-    stage('Test') {
-        steps {
+        stage('Test') {
+            steps {
 
+            }
         }
     }
 }
