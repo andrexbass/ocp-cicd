@@ -1,0 +1,41 @@
+---
+kind: Template
+apiVersion: v1
+metadata:
+  annotations:
+    description: Jenkins pipeline
+    tags: jenkins, pipeline
+  name: pipeline
+objects:
+  - apiVersion: v1
+    kind: BuildConfig
+    metadata:
+      annotations:
+        pipeline.alpha.openshift.io/uses: '[{"name": "jenkins", "namespace": "devops", "kind": "DeploymentConfig"}]'
+      labels:
+        app: pipeline
+        name: pipeline
+      name: pipeline
+    spec:
+      triggers:
+        - type: GitHub
+          github:
+            secret: ${WEBHOOK_SECRET}
+        - type: Generic
+          generic:
+            secret: ${WEBHOOK_SECRET}
+      runPolicy: Serial
+      source:
+        type: None
+      strategy:
+        jenkinsPipelineStrategy:
+          type: JenkinsPipeline
+          env:
+          - name: DEV_PROJECT
+            value: ${DEV_PROJECT}
+          - name: STAGE_PROJECT
+            value: ${STAGE_PROJECT}
+          - name: ENABLE_QUAY
+            value: ${ENABLE_QUAY}
+          jenkinsfilePath: https://raw.githubusercontent.com/andrexbass/ocp-cicd/master/JenkinsFile
+            

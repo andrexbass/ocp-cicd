@@ -42,7 +42,16 @@ openshift_cluster_content:
 - object: jenkins
   content:
     - name: jenkins
-      template: "Jenkins-persistent"
+      template: "{{ inventory_dir }}/../templates/jenkins-template.yml"
+      params: "{{ inventory_dir }}/../params/devops/jenkins.ini"
+      namespace: "devops"
+      tags:
+      - devops
+      - jenins
+- object: java-pipeline
+  content:
+    - name: java-pipeline
+      template: "{{ inventory_dir }}/../templates/pipeline.yml"
       namespace: "devops"
       tags:
       - devops
