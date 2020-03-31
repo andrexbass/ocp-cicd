@@ -13,3 +13,15 @@ openshift_cluster_content:
       ignore_unknown_parameters: false
       tags:
       - projectrequests
+- object: "{{ name }}-pipeline"
+  content:
+    - name: "{{ name }}-pipeline"
+      template: "{{ inventory_dir }}/../../templates/pipeline-template.yml"
+      namespace: "devops"
+      params_from_vars:
+        NAME: "{{ name }}"
+        URL: "{{ url }}"
+      tags:
+      - devops
+      - jenins
+      - pipeline

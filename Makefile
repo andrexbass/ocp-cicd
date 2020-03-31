@@ -32,5 +32,5 @@ remove: ## Remova todo o projeto devops do cluster openshift
 
 new-app: ## Criar uma nova aplicação baseada em uma pipeline
 	@printf "\n\n$(GREEN)----> Preparando o app $(NC)\n\n"
-	@read -r -p "Digite o nome do app: " NAME; ansible-playbook -i inventory/app/ apply.yml -e name=$$NAME
+	@read -r -p "Digite o nome do app: " NAME; read -r -p "URL do repositorio git: " URL; ansible-playbook -i inventory/app/ apply.yml -e name=$$NAME -e url=$$URL
 	@printf "\n\n$(GREEN)----> App pronto $(NC)\n\n"

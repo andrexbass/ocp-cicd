@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Build App') {
             steps {
-                git branch: 'master', url: 'https://github.com/andrexbass/php-helloworld.git'
+                git branch: 'master', url: '${params.url}'
             }
         }
         stage('Test') {

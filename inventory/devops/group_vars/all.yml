@@ -48,12 +48,3 @@ openshift_cluster_content:
       tags:
       - devops
       - jenins
-- object: java-pipeline
-  content:
-    - name: java-pipeline
-      template: "{{ inventory_dir }}/../../templates/pipeline-template.yml"
-      namespace: "devops"
-      tags:
-      - devops
-      - jenins
-      - pipeline

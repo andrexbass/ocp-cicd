@@ -15,7 +15,7 @@ objects:
       labels:
         app: cicd-pipeline
         name: cicd-pipeline
-      name: first-pipeline
+      name: "${NAME}-pipeline"
     spec:
       triggers:
         - type: GitHub
@@ -27,17 +27,21 @@ objects:
       runPolicy: Serial
       source:
         git:
-          uri: "https://github.com/andrexbass/ocp-cicd"
+          uri: https://github.com/andrexbass/ocp-cicd
       strategy:
         jenkinsPipelineStrategy:
           type: JenkinsPipeline
           jenkinsfilePath: Jenkinsfile
           env:
-          - name: DEV_PROJECT
-            value: ${DEV_PROJECT}
-          - name: STAGE_PROJECT
-            value: ${STAGE_PROJECT}
-          - name: ENABLE_QUAY
-            value: ${ENABLE_QUAY}
+          - name: url
+            value: ${URL}
+parameters:
+- displayName: Nome da aplicacao
+  name: NAME
+  required: true
+  value: app
+- displayName: URL do repositorio git
+  name: URL
+  required: true
           
             
