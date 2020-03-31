@@ -21,13 +21,16 @@ help:
 
 .PHONY:
 
-INVENTORY=inventory/
-
 install: ## Instala ferramentas devops no openshift
 	@printf "\n\n$(GREEN)----> Instalando ferramentas devops no cluster openshift $(NC)\n\n"
-	@ansible-playbook -i $(INVENTORY) apply.yml
+	@ansible-playbook -i inventory/devops/ apply.yml
 	@printf "\n\n$(GREEN)----> Instalacao finalizada $(NC)\n\n"
 
 remove: ## Remova todo o projeto devops do cluster openshift
 	@printf "\n\n$(GREEN)----> Deletando todos objetos do projeto devops $(NC)\n\n"
 	@oc delete project devops
+
+new-app: ## Criar uma nova aplicação baseada em uma pipeline
+	@printf "\n\n$(GREEN)----> Preparando o app $(NC)\n\n"
+	@read -r -p "Digite o nome do app: " NAME; ansible-playbook -i inventory/app/ apply.yml -e name=$$NAME
+	@printf "\n\n$(GREEN)----> App pronto $(NC)\n\n"

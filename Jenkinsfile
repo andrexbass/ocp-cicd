@@ -1,5 +1,3 @@
-def mvnCmd = "mvn -s configuration/cicd-settings-nexus3.xml"
-
 pipeline {
     agent {
         label 'maven'

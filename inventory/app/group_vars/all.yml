@@ -1,0 +1,15 @@
+---
+ansible_connection: local
+
+openshift_cluster_content:
+- object: aplication
+  content:
+    - name: app-pipeline
+      template: "{{ inventory_dir }}/../../templates/projectrequest-template.yml"
+      params_from_vars:
+        NAMESPACE: "{{ name }}"
+        NAMESPACE_DISPLAY_NAME: "{{ name }}"
+      action: create
+      ignore_unknown_parameters: false
+      tags:
+      - projectrequests

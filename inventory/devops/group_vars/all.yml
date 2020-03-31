@@ -1,0 +1,59 @@
+---
+ansible_connection: local
+
+openshift_cluster_content:
+- object: projects
+  content:
+    - name: devops
+      template: "{{ inventory_dir }}/../../templates/projectrequest-template.yml"
+      params: "{{ inventory_dir }}/../../params/devops/project.ini"
+      action: create
+      ignore_unknown_parameters: false
+      tags:
+      - projectrequests
+      - projectrequests-devops
+- object: gogs
+  content:
+    - name: gogs
+      template: "{{ inventory_dir }}/../../templates/gogs-template.yml"
+      params: "{{ inventory_dir }}/../../params/devops/gogs.ini"
+      namespace: "devops"
+      tags:
+      - devops
+      - gogs
+- object: nexus
+  content:
+    - name: nexus
+      template: "{{ inventory_dir }}/../../templates/nexus-template.yml"
+      params: "{{ inventory_dir }}/../../params/devops/nexus.ini"
+      namespace: "devops"
+      tags:
+      - devops
+      - nexus
+- object: sonar
+  content:
+    - name: sonar
+      template: "{{ inventory_dir }}/../../templates/sonar-template.yml"
+      params: "{{ inventory_dir }}/../../params/devops/sonar.ini"
+      namespace: "devops"
+      tags:
+      - devops
+      - sonar
+- object: jenkins
+  content:
+    - name: jenkins
+      template: "{{ inventory_dir }}/../../templates/jenkins-template.yml"
+      params: "{{ inventory_dir }}/../../params/devops/jenkins.ini"
+      namespace: "devops"
+      tags:
+      - devops
+      - jenins
+- object: java-pipeline
+  content:
+    - name: java-pipeline
+      template: "{{ inventory_dir }}/../../templates/pipeline-template.yml"
+      namespace: "devops"
+      tags:
+      - devops
+      - jenins
+      - pipeline
