@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Build App') {
             steps {
-                git branch: 'master', url: '${params.url}'
+                git branch: 'master', url: ${params.url}
             }
         }
         stage('Test') {
