@@ -28,6 +28,8 @@ objects:
       source:
         git:
           uri: https://github.com/andrexbass/ocp-cicd
+        sourceSecret:
+          name: "devops-reposecret"
       strategy:
         jenkinsPipelineStrategy:
           type: JenkinsPipeline
