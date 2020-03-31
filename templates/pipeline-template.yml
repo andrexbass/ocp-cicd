@@ -33,7 +33,7 @@ objects:
           type: JenkinsPipeline
           jenkinsfilePath: Jenkinsfile
           env:
-          - name: url
+          - name: URL
             value: ${URL}
 parameters:
 - displayName: Nome da aplicacao
